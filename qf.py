@@ -3,7 +3,7 @@
 import math as m
 
 class QNumber:
-    def __init__(self, m_bits, n_bits):
+    def __init__(self, m_bits, n_bits, fval=0.0):
         self.m_bits = m_bits
         self.n_bits = n_bits
 
@@ -14,7 +14,7 @@ class QNumber:
         
         self.k = int(m.pow(2, n_bits-1));
 
-        self._val = 0
+        self.from_float(fval)
 
     def _saturate(self, value):
         if value > self.max_i:
@@ -92,6 +92,14 @@ class QNumber:
 
         return qn
 
+    def __str__(self):
+        return str(self._val)
+
+    def __repr__(self):
+        return str(self._val)
+
+    def __float__(self):
+        return self.to_float()
   
 
 def disp(op, a, b, c):
